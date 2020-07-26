@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="es" ng-app="Examen">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+    <script src="assets/aplicacion.js "></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js " integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo " crossorigin="anonymous "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js " integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1 " crossorigin="anonymous "></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js " integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM " crossorigin="anonymous "></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js " integrity="sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI=" crossorigin=" anonymous "></script>
+    <title>Examen Ferreteria</title>
+</head>
+
+<body ng-controller="controlventas">
+    <div class="d-flex" id="content-wrapper" ng-switch="vista">
+
+        <!-- Sidebar -->
+        <div id="sidebar-container" class="" style="background-color: rgb(44, 40, 41); color: black;" align="center">
+            <div class="logo">
+                <h4 class="text-light font-weight-bold mb-0" style="background-color: blue;">Ferretero Feliz</h4>
+            </div>
+            <div class="menu">
+                <a ng-click="volver()" href="#" class="d-block text-light p-3 border-0"><i class="icon ion-md-apps lead mr-2"></i>
+                    INICIO</a>
+
+                <a style="cursor:pointer" ng-click="adminproductos()" class="d-block text-light p-3 border-0"><i class="icon ion-md-people lead mr-2"></i>
+                    PRODUCTOS</a>
+
+                <a href="#" class="d-block text-light p-3 border-0"><i class="icon ion-md-person lead mr-2"></i>
+                    PERFIL</a>
+                <a href="#" class="d-block text-light p-3 border-0"> <i class="icon ion-md-settings lead mr-2"></i> CONFIGURACIÒN
+                </a>
+                <br><br>
+                <a href=""><img src="assets/img/tienda.jpg" alt="" class="img-fluid rounded" ></a>
+            </div>
+    
+        </div>
+        <!-- Contenido que cambiara-->
+
+        <div class="w-100">
+
+            <!--  inicion nav vertical-->
+            <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+                <div class="container">
+
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <i class="navbar-toggler-icon"></i>
+                        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link text-dark dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img src="assets/img/flavio.jpg" class="img-fluid rounded-circle avatar mr-2" alt="https://generated.photos/" /> FLAVIO MENDOZA
+                                </a>
+                                <div class="dropdown-menu" style="text-align: center;">
+                                    <a class="dropdown-item" href="#">Mi perfil</a>
+                                    <a class="dropdown-item" href="#">Suscripciones</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">Cerrar sesión</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <!-- fin del nav Vertical -->
+
+            <!-- parte donde se muestran la lista de productos -->
+            <div id="content" class="bg-grey w-100" ng-switch-when="listap">
+
+                <section class="bg-light py-3">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-9 col-md-8">
+                                <h1 style="text-align: center; font-family: Arial Black;">LISTO</h1>
+                                <p style="text-align: center;">COMPRE SU PRODUCTO</p>
+                            </div>
+                            <div class="col-lg-3 col-md-4 d-flex">
+                                <button ng-click="volver()" style="background-color:cadetblue; color:black; font-family: Arial Black; " class="btn-11-11 align-self-center " >VOLVER</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <div class="row" style="background-color:white;">
+                    <div class="offset-4 col-lg-4 col-md-12 "></div>
+ 
+                </div>
+                <section class="bg-mix py-3">
+                    <div class="container">
+                        <div class="card rounded-0">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div ng-repeat="p in listaproductos | filter:buscar1" class="col-lg-3 col-md-6 border-right border-bottom d-flex stat my-3">
+                                        <div class="mx-auto text-center">
+                                            <h6 class="text-muted">{{p.denominacion}}</h6>
+                                            <h3 class="font-weight-bold text-center">{{p.precio | currency }}</h3>
+                                            <h6 class="text-success"> {{p.nombre}}</h6>
+                                            <input ng-click="addproducto(p)" type="button" class="btn btn-link " value="Agregar + ">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <!--parte donde estara la parte de la factura-->
+            <div id="content1 " class="bg-grey w-100 " ng-switch-when="factura">
+
+                <section class="bg-light py-3 ">
+                    <div class="container ">
+                        <div class="row ">
+                            <div class="col-lg-9 col-md-8 ">
+                                <h1 style="text-align: center; font-family: Arial Black;">FERRETERIA</h1>
+                                <p style="text-align: center;">Compre sus Productos</p>
+                            </div>
+                            <div class="col-lg-3 col-md-4 d-flex ">
+                                <button style="background-color:cadetblue; color:black; font-family: Arial Black; " class="btn-10-10 align-self-center " ng-click="verListaProductos() ">QUIERO AÑADIR</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="bg-mix py-3 ">
+                    <div class="container ">
+                                    <table class="table " border="4px"" style="text-align: center;">
+                                        <thead style="background-color:chartreuse;">
+                                            <tr>
+                                                <th>CONCEPTO</th>
+                                                <th>PRECIO</th>
+                                                <th>UNIDADES</th>
+                                                <th>PRECIO</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="dd in listaDetalless">
+                                                <td>{{dd.denominacion}}</td>
+                                                <td>{{dd.pp}}</td>
+                                                <td>{{dd.cantidad}}</td>
+                                                <td>{{dd.dp}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td>Subtotal:</td>
+                                                <td>{{subtotal11 |currency}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td>IGV:</td>
+                                                <td>{{igv11 |currency}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td>Total:</td>
+                                                <td>{{ total11 |currency }}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                    </div>
+                </section>
+
+            </div>
+            <!--find del contenido de la factura-->
+            <div id="content2 " class="bg-grey w-100 " ng-switch-when="agregarpedido">
+                <section class="bg-light py-3 ">
+                    <div class="container ">
+                        <div class="row ">
+                            <div class="col-lg-9 col-md-8 ">
+                                <h1 class="font-weight-bold mb-0 "></h1>
+                                <h1 class="lead text-muted " style="text-align: center; font-family: Arial Black;">LOS DETALLES SE SU COMPRA</h1>
+                            </div>
+                            <div class="col-lg-3 col-md-4 d-flex ">
+                                <button ng-click="volver1() " style="background-color:cadetblue; color:black; font-family: Arial Black; " class="btn align-self-center " >VOLVER</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="bg-mix py-3 ">
+                    <div class="container " style="text-align: center; font-family: Arial Black;">
+                        <div class="card rounded-0 ">
+                            <div class="card-body ">
+                                
+                                        <div>
+                                            <h6 >{{productodetalle.denominacion |uppercase}}</h6>
+                                            <h3 >{{productodetalle.precio| currency }}</h3>
+                                          
+                                                    <label for="Cantidad">CANTIDAD</label>
+                                                    <input type="text" name="" ng-model="datosderegistro.cantidad" class="form-control" id="">
+                                                    <label for="usuario">USUARIO</label>
+                                                    <input type="text" ng-model="datosderegistro.usuario" class="form-control">
+                                                    <label for="direccion">DIRECCIÒN</label>
+                                                    <input type="text" ng-model="datosderegistro.direccion" class="form-control">
+                                                    <label for="direccion">NRO FACTURA</label>
+                                                    <input type="text" ng-model="datosderegistro.numeroFactura" class="form-control">
+                                                    <br>
+                                                    <input type="button" ng-click="generarFactura(productodetalle,datosderegistro)" value="COMPRAR" class="btn" style="background-color: crimson;"><br><br>
+                                           
+                                        </div>
+                                    
+                                
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <!--Contenido de control producto-->
+            <div id="content3" class="bg-grey w-100 " ng-switch-when="ctrlproducto">
+                <section class="bg-light py-3 ">
+                    <div class="container ">
+                        <div class="row ">
+                            <div class="col-lg-9 col-md-8 ">
+                                <h1 style="text-align: center; font-family: Arial Black;">CONTROL DE SU PRODUCTO</h1>
+                            </div>
+                            <div class="col-lg-3 col-md-4 d-flex ">
+                                <button style="background-color:cadetblue; color:black; font-family: Arial Black; " class="btn-10-10 align-self-center "  ng-click="addprod()">QUIERO AÑADIR</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="bg-mix py-3 ">
+                    <div class="container ">
+                                    <table class="table " border="4px" style="text-align: center;">
+                                        <thead style="background-color: chartreuse;">
+                                            <tr>
+                                                <th>Id</th>
+                                                <th>DENOMINACÌON</th>
+                                                <th>PRECIO</th>
+                                                <th>STOCK</th>
+                                                <th>CATEGORÌA</th>
+                                                <th>ACCIÒN</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                            <tr ng-repeat="prod in listaproductos">
+                                                <td>{{prod.id}}</td>
+                                                <td>{{prod.denominacion}}</td>
+                                                <td>{{prod.precio}}</td>
+                                                <td>{{prod.stock}}</td>
+                                                <td>{{prod.nombre}}</td>
+                                                <td>
+                                                    <a href="" ng-click="editarproducto(prod)"><i class="icon ion-md-settings"></i> </a>&nbsp; &nbsp;<a ng-click="darbajaProducto(prod)" href=""><i class="icon ion-md-trash"></i></a>&nbsp; &nbsp;
+                                                    <a ng-click="verDetalleProducto(prod)" href=""><i class="icon ion-md-eye"></i></a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                    </div>
+                </section>
+
+            </div>
+
+
+            <!--editar pedido-->
+            <div id="content4 " class="bg-grey w-100 " ng-switch-when="editarproductoo">
+                <section class="bg-light py-3 ">
+                    <div class="container ">
+                        <div class="row ">
+                            <div class="col-lg-9 col-md-8 ">
+                                <h1 class="font-weight-bold mb-0 "></h1>
+                                <h1 class="lead text-muted " style="text-align: center; font-family: Arial Black;">EDITAR EL PRODUCTO</h1>
+                            </div>
+                            <div class="col-lg-3 col-md-4 d-flex ">
+                                <button ng-click="volver2() " style="background-color:cadetblue; color:black; font-family: Arial Black; " class="btn align-self-center " >VOLVER</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="bg-mix py-3 " style="text-align: center;">
+                    <div class="container ">
+                                    <table  align="center" border="4px">
+                                        <tr>
+                                            <td>ID</td>
+                                            <td><input type="text" ng-model="detalleu.id" disabled></td>
+                                        </tr>
+                                        <tr>
+                                            <td>DENOMINACIÒN</td>
+                                            <td><input type="text" ng-model="detalleu.denominacion"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>STOCK</td>
+                                            <td><input type="text" ng-model="detalleu.stock"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>PRECIO</td>
+                                            <td><input type="text" ng-model="detalleu.precio"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>CATEGORÌA</td>
+                                            <td><select name="" id="" ng-model="detalleu.cat">
+                                                <option ng-repeat="c in listacategorias" value="{{c.id}}">{{c.nombre}}</option>
+                                            </select></td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td>
+                                                <input type="button" ng-click="GuardarCambios(detalleu)" style="background-color:crimson; color:black; font-family: Arial Black; " class="btn-10" value="GUARDAR CAMBIOS">
+                                            </td>
+                                        </tr>
+                                    </table>
+                    </div>
+                </section>
+            </div>
+
+            <!--Ver pedido-->
+
+            <div id="content5 " class="bg-grey w-100 " ng-switch-when="verdetalleproducto">
+                <section class="bg-light py-3 ">
+                    <div class="container ">
+                        <div class="row ">
+                            <div class="col-lg-9 col-md-8 ">
+                                <h1 class="font-weight-bold mb-0 "></h1>
+                                <h1 class="lead text-muted " style="text-align: center; font-family: Arial Black;">LOS DETALES DEL PRODUCTO</h1>
+                            </div>
+                            <div class="col-lg-3 col-md-4 d-flex ">
+                                <button ng-click="volver2() " style="background-color:cadetblue; color:black; font-family: Arial Black; " class="btn align-self-center " >VOLVER</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="bg-mix py-3 " align="center">
+                    <div class="container " >
+                                    <table border="4px" align="center" style="width: 50%;">
+                                        <tr>
+                                            <td>ID</td>
+                                            <td>{{detalleu.id |uppercase}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>DENOMINACIÒN</td>
+                                            <td>{{detalleu.denominacion |uppercase}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>STOCK</td>
+                                            <td>{{detalleu.stock |uppercase}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>PRECIO</td>
+                                            <td>{{detalleu.precio| currency }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>CATEGORÌA</td>
+                                            <td>{{detalleu.nombre |uppercase}}</td>
+                                        </tr>
+                                    </table> 
+                    </div>
+                </section>
+            </div>
+
+            <!--agregar producto-->
+            <div id="content6 " class="bg-grey w-100 " ng-switch-when="nuevoproducto">
+                <section class="bg-light py-3 ">
+                    <div class="container ">
+                        <div class="row ">
+                            <div class="col-lg-9 col-md-8 ">
+                                <h1 class="font-weight-bold mb-0 "></h1>
+                                <h1 style="text-align: center; font-family: Arial Black;">NUEVO PRODUCTO</h1>
+                            </div>
+                            <div class="col-lg-3 col-md-4 d-flex ">
+                                <button ng-click="volver2() " style="background-color:cadetblue; color:black; font-family: Arial Black; " class="btn align-self-center " >VOLVER</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section>  
+                                    <table border="3px" style="text-align: center;" align="center">
+                                        <tr></tr>
+                                            <td>ID</td>
+                                            <td><input type="text" ng-model="detalleu1.id"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>DENOMINACIÒN</td>
+                                            <td><input type="text" ng-model="detalleu1.denominacion"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>STOCK</td>
+                                            <td><input type="text" ng-model="detalleu1.stock"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>PRECIO</td>
+                                            <td><input type="text" ng-model="detalleu1.precio"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>CATEGORÌA</td>
+                                            <td><select name="" id="" ng-model="detalleu1.cat">
+                                                <option ng-repeat="c in listacategorias" value="{{c.id}}">{{c.nombre}}</option>
+                                            </select></td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td>
+                                                <input type="button" ng-click="AgregarProducto(detalleu1)" style="background-color: lightcoral; color:black; font-family: Arial Black; " class="btn align-self-center " value="Guardar Cambios">
+                                            </td>
+                                        </tr>
+                                    </table>
+                </section>
+            </div>
+        </div>
+        <!--fin del contenido que cambiara-->
+    </div>
+    
+
+</body>
+
+</html>
